@@ -51,6 +51,11 @@ if (process.env.NODE_ENV === "production") {
         res.sendFile(path.resolve("dist", "index.html"));
     });
 
+    app.get("/t/:infoId", async (req, res) => {
+        const { infoId } = req.params;
+        res.redirect(301, `https://app.hmif.dev/timeline/${infoId}`);
+    });
+
     app.get("*", async (req, res) => {
         const slug = req.originalUrl.slice(1);
         const link = await getLink({ slug }, null, true);
@@ -59,11 +64,6 @@ if (process.env.NODE_ENV === "production") {
         } else {
             res.sendFile(path.resolve("dist", "index.html"));
         }
-    });
-
-    app.get("/t/:infoId", async (req, res) => {
-        const { infoId } = req.params;
-        res.redirect(301, `https://app.hmif.dev/timeline/${infoId}`);
     });
 }
 

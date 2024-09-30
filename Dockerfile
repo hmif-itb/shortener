@@ -26,9 +26,7 @@ WORKDIR /app/frontend
 RUN NODE_ENV=production
 RUN pnpm build
 
-FROM gcr.io/distroless/nodejs18-debian11
-
-## From the builder image above, start node from a distroless image
+FROM node:20
 
 WORKDIR /app
 
@@ -38,4 +36,4 @@ COPY --from=BUILD_IMAGE /app/VERSION ./VERSION
 
 EXPOSE 3000
 
-CMD ["/app/src/index.js"]
+CMD ["./src/index.js"]

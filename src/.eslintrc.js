@@ -37,5 +37,6 @@ module.exports = {
         "no-param-reassign": ["error", { props: false }],
         quotes: ["error", "double"],
         semi: ["error", "always"],
+        "linebreak-style": 0,
     },
 };

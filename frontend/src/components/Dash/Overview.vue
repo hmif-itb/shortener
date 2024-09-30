@@ -2,7 +2,7 @@
     <div class="overview" ref="overview">
         <div class="header">
             <div class="title">
-                <h1>Lynx</h1>
+                <h1>HMIF Link</h1>
             </div>
             <div class="actions">
                 <div class="icon refresh">

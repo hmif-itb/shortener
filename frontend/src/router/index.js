@@ -99,9 +99,9 @@ router.beforeEach(async (to, from, next) => {
     const account = useAccountStore();
     if (to.meta) {
         if (to.meta.title) {
-            document.title = `${to.meta.title} | Lynx`;
+            document.title = `${to.meta.title} | HMIF Link`;
         } else {
-            document.title = "Lynx";
+            document.title = "HMIF Link";
         }
         if (to.meta.requiresLogin) {
             if (account.account === null && account.token !== null) {

@@ -60,5 +60,6 @@ module.exports = {
         "vue/no-v-html": "off",
         quotes: ["error", "double"],
         semi: ["error", "always"],
+        "linebreak-style": 0,
     },
 };

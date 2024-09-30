@@ -9,12 +9,20 @@ const backend = require("./modules/backend");
 
 const setup = require("./modules/setup");
 
-const undefinedEnv = ["DB_HOST", "JWT_KEY", "URL_SET", "URL_ONLY_UNIQUE", "URL_LENGTH"].filter(
+const undefinedEnv = [
+    "DB_HOST",
+    "JWT_KEY",
+    "URL_SET",
+    "URL_ONLY_UNIQUE",
+    "URL_LENGTH",
+].filter(
     (envFile) => !Object.prototype.hasOwnProperty.call(process.env, envFile),
 );
 
 if (undefinedEnv.length > 0) {
-    throw new Error(`Required env variables were not provided: ${undefinedEnv.join(",")}`);
+    throw new Error(
+        `Required env variables were not provided: ${undefinedEnv.join(",")}`,
+    );
 }
 
 const app = express();
@@ -52,10 +60,17 @@ if (process.env.NODE_ENV === "production") {
             res.sendFile(path.resolve("dist", "index.html"));
         }
     });
+
+    app.get("/t/:infoId", async (req, res) => {
+        const { infoId } = req.params;
+        res.redirect(301, `https://app.hmif.dev/timeline/${infoId}`);
+    });
 }
 
 const mongoDB = `mongodb://${
-    process.env.DB_USER && process.env.DB_PASSWORD ? `${process.env.DB_USER}:${encodeURIComponent(process.env.DB_PASSWORD)}@` : ""
+    process.env.DB_USER && process.env.DB_PASSWORD
+        ? `${process.env.DB_USER}:${encodeURIComponent(process.env.DB_PASSWORD)}@`
+        : ""
 }${process.env.DB_HOST}:${process.env.DB_PORT}/shortener?authSource=admin`;
 
 mongoose.set("strictQuery", false);

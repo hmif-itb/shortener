@@ -2,7 +2,7 @@
 	"files.eol": "\n",
 	"eslint.workingDirectories": [
 		"./src",
-		"./frontend"		
+		"./frontend"
 	],
 	"eslint.options": {
 		"resolvePluginsRelativeTo": ".",

@@ -7,7 +7,7 @@
 	"license": "MIT",
 	"private": false,
 	"dependencies": {
-		"bcrypt": "^5.1.1",
+		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.20.2",
 		"cookie": "^0.5.0",
 		"cron": "^2.2.0",

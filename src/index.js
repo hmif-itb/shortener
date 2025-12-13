@@ -67,11 +67,12 @@ if (process.env.NODE_ENV === "production") {
     });
 }
 
+const dbAuthSource = process.env.DB_AUTH_SOURCE || "admin";
 const mongoDB = `mongodb://${
     process.env.DB_USER && process.env.DB_PASSWORD
         ? `${process.env.DB_USER}:${encodeURIComponent(process.env.DB_PASSWORD)}@`
         : ""
-}${process.env.DB_HOST}:${process.env.DB_PORT}/shortener?authSource=admin`;
+}${process.env.DB_HOST}:${process.env.DB_PORT}/shortener?authSource=${dbAuthSource}`;
 
 mongoose.set("strictQuery", false);
 

@@ -2,7 +2,7 @@ FROM node:22 AS BUILD_IMAGE
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
 WORKDIR /app
 

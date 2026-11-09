@@ -1,4 +1,4 @@
-FROM node:20 AS BUILD_IMAGE
+FROM node:22 AS BUILD_IMAGE
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
@@ -26,7 +26,7 @@ WORKDIR /app/frontend
 RUN NODE_ENV=production
 RUN pnpm build
 
-FROM node:20
+FROM node:22-slim
 
 WORKDIR /app
 
